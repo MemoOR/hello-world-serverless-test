@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "mfa-serverless-plugin": "^0.0.5",
+    "serverless-plugin-scripts": "^1.0.2"
+  }
+}
