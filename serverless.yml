@@ -39,7 +39,7 @@ provider:
 
 # you can add statements to the Lambda function's IAM Role here
   iam:
-    role: arn:aws:iam:: :role/run_lambda
+    role: ${env:AWS_IAM_ROLE}
   
   # environment:
 #      statements:
@@ -112,14 +112,4 @@ functions:
     environment:
       MY_VARIABLE: "Im enviroment var"
 
-# you can add CloudFormation resource templates here
-#resources:
-#  Resources:
-#    NewResource:
-#      Type: AWS::S3::Bucket
-#      Properties:
-#        BucketName: my-new-bucket
-#  Outputs:
-#     NewOutput:
-#       Description: "Description for the output"
-#       Value: "Some output value"
+
