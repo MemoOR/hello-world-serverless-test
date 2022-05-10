@@ -1,5 +1,6 @@
 import json
 import os
+import requests
 
 def hello(event, context):
     enviroment_var = os.environ['MY_VARIABLE']

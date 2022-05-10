@@ -69,9 +69,19 @@ provider:
 #    - include-me.py
 #    - include-me-dir/**
 
+layers:
+  test:
+    package:
+      path: LayerLambda
+
+
 functions:
   hello:
     handler: handler.hello
+    layers:
+      - !Ref TestLambdaLayer
+      #- arn #you can add up to 5 layers and can be on this same service or with arn
+ 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
