@@ -71,8 +71,7 @@ provider:
 
 layers:
   test:
-    package:
-      path: LayerLambda
+    path: LayerLambda
 
 
 functions:
