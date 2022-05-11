@@ -4,6 +4,13 @@ import requests
 
 def hello(event, context):
     enviroment_var = os.environ['MY_VARIABLE']
+
+    try:
+        ip = requests.get("http://checkip.amazonaws.com/")
+    except requests.RequestException as e:
+        # Send some context about this error to Lambda Logs
+        print(e)
+        raise e
     
     body = {
         "message": "Go Serverless!! deployed correctly with github action",
@@ -12,16 +19,8 @@ def hello(event, context):
 
     response = {
         "statusCode": 200,
-        "body": json.dumps(body)
+        "body": json.dumps(body),
+        "location": ip.text.replace("\n", "")
     }
 
     return response
-
-    # Use this code if you don't use the http event with the LAMBDA-PROXY
-    # integration
-    """
-    return {
-        "message": "Go Serverless v1.0! Your function executed successfully!",
-        "event": event
-    }
-    """
