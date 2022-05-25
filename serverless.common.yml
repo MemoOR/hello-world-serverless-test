@@ -19,7 +19,7 @@ provider:
   
 layers:
   test:
-    path: LayerLambda
+    path: ../../LayerLambda
 
 
 
