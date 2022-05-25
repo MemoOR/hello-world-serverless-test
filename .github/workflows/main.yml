@@ -29,7 +29,9 @@ jobs:
       if: steps.cache-primes.outputs.cache-hit != 'true'
       uses: actions/setup-node@v1
 
-    - run: npm ci 
+    - name: install npm dependencies
+      run: npm ci 
+      working-directory: ./
      
     - name: serverless deploy
       uses: serverless/github-action@v3
