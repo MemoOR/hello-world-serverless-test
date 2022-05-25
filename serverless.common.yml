@@ -1,0 +1,25 @@
+frameworkVersion: '3'
+
+plugins:
+  - serverless-plugin-scripts
+  - mfa-serverless-plugin
+
+custom:
+  scripts:
+    hooks:
+      'deploy:finalize': python3 script.py
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: us-west-2
+
+  iam:
+    role: ${env:AWS_IAM_ROLE}
+  
+layers:
+  test:
+    path: LayerLambda
+
+
+

@@ -1,0 +1,23 @@
+service: serverless-l2
+
+frameworkVersion: ${file(../../serverless.common.yml):frameworkVersion}
+
+plugins: ${file(../../serverless.common.yml):plugins}
+
+custom: ${file(../../serverless.common.yml):custom}
+
+provider: ${file(../../serverless.common.yml):provider}
+
+layers: ${file(../../serverless.common.yml):layers}
+
+functions:
+  hello:
+    handler: handler.hello
+    layers:
+      - !Ref TestLambdaLayer
+      #- arn #you can add up to 5 layers and can be on this same service or with arn
+     
+     environment:
+      MY_VARIABLE: "Im enviroment var"
+
+
