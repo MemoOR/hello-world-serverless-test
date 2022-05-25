@@ -17,7 +17,7 @@ functions:
       - !Ref TestLambdaLayer
       #- arn #you can add up to 5 layers and can be on this same service or with arn
      
-     environment:
+    environment:
       MY_VARIABLE: "Im enviroment var"
 
 
