@@ -7,7 +7,7 @@ plugins:
 custom:
   scripts:
     hooks:
-      'deploy:finalize': python3 script.py
+      'deploy:finalize': python3 ../../script.py
 
 provider:
   name: aws
