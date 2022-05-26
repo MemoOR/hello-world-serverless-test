@@ -1,6 +1,7 @@
-from libs.imports import json, os, requests
+import json, os, requests
 
 def hello(event, context):
+
     enviroment_var = os.environ['MY_VARIABLE']
 
     try:
