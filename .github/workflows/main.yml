@@ -43,7 +43,7 @@ jobs:
               while read path; do
                 # Set $directory to substring before /
                 parent="$( echo $path | cut -d'/' -f1 -s )"
-                directory="$( echo $path | cut -d'/' -f3 )"
+                directory="$( echo $path | cut -d'/' -f 1,2 -s )"
               echo $parent
               echo $directory
               # ignore .github folder
