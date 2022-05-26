@@ -44,7 +44,8 @@ jobs:
                 # Set $directory to substring before /
                 parent="$( echo $path | cut -d'/' -f1 -s )"
                 directory="$( echo $path | cut -d'/' -f3 )"
-
+              echo $parent
+              echo $directory
               # ignore .github folder
               if [[ "$parent" != ".github" ]]; then
                 # Add build to the matrix only if it is not already included
