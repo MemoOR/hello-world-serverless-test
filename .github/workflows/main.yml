@@ -42,10 +42,11 @@ jobs:
               # Loop by lines
               while read path; do
                 # Set $directory to substring before /
-                directory="$( echo $path | cut -d'/' -f2 -s )"
+                parent="$( echo $path | cut -d'/' -f1 -s )"
+                directory="$( echo $path | cut -d'/' -f3 )"
 
               # ignore .github folder
-              if [[ "$directory" != ".github" ]]; then
+              if [[ "$parent" != ".github" ]]; then
                 # Add build to the matrix only if it is not already included
                 JSONline="\"$directory\","
                 if [[ "$JSON" != *"$JSONline"* ]]; then
