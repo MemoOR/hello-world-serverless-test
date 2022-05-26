@@ -74,19 +74,12 @@ jobs:
     
     strategy:
         matrix:
-          # Parse JSON array containing names of all filters matching any of changed files
-          # e.g. ['servicea', 'serviceb'] if both package folders contains changes
           folder: ${{ fromJSON(needs.changes.outputs.folders) }} 
     
     steps:
     - uses: actions/checkout@v3
       with:
             fetch-depth: 100
-    
-    - name: Has Changed
-      uses: YassinEldeeb/has-changed-path@v2.1
-      with:
-        paths: ./services
     
     - name: Cache Primes
       uses: actions/cache@v3
@@ -104,17 +97,19 @@ jobs:
 
     - name: install npm dependencies
       run: npm ci 
-      working-directory: ./
       
     - name: Install Serverless Framework
       run: npm install -g serverless
       
     - name: Serverless Authentication
       run: sls config credentials --provider aws --key ${{secrets.AWS_ACCESS_KEY_ID}} --secret ${{secrets.AWS_SECRET_ACCESS_KEY}}
-            
+    
+    - name: print things
+      run: echo ${{ matrix.folder }}
+      
     - name: Deploy to AWS
       run: serverless deploy --verbose
-      working-directory: './services/first_lambda'
+      working-directory: ${{ matrix.folder }}
       env:
         SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
         AWS_MFA_KEY: ${{ secrets.AWS_MFA_KEY }}
