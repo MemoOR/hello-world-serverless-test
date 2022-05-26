@@ -42,7 +42,7 @@ jobs:
               # Loop by lines
               while read path; do
                 # Set $directory to substring before /
-                directory="$( echo $path | cut -d'/' -f1 -s )"
+                directory="$( echo $path | cut -d'/' -f2 -s )"
 
               # ignore .github folder
               if [[ "$directory" != ".github" ]]; then
