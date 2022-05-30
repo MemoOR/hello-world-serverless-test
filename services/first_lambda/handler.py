@@ -3,11 +3,10 @@ import json, os, requests
 def hello(event, context):
 
     enviroment_var = os.environ['MY_VARIABLE']
-    
+
     try:
         ip = requests.get("http://checkip.amazonaws.com/")
     except requests.RequestException as e:
-        # Send some context about this error to Lambda Logs
         print(e)
         raise e
     
