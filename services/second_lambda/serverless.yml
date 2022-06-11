@@ -12,7 +12,7 @@ layers: ${file(../../serverless.common.yml):layers}
 
 functions:
   hello:
-    handler: handler.hello
+    handler: handler.lambda_handler
     layers:
       - !Ref TestLambdaLayer
       #- arn #you can add up to 5 layers and can be on this same service or with arn
