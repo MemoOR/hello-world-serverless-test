@@ -23,7 +23,6 @@ def lambda_handler(event, context):
     
     print("sending to:")
     print(id)
-
     
     # JSON para mandar los message attributes
     messageAttribs = {
