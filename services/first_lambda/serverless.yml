@@ -18,6 +18,8 @@ functions:
       #- arn #you can add up to 5 layers and can be on this same service or with arn
      
     environment:
-      MY_VARIABLE: "Im enviroment var"
+      MessageGroupId: "request"
+      QUEUE1_NAME: "testqueue.fifo"
+      QUEUE2_NAME: "testqueue_return.fifo"
 
 
